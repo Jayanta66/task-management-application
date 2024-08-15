@@ -1,0 +1,82 @@
+For Add or Create :
+
+{
+    "title": "kldsjfdsjf",
+    "description": "kjldfldskf",
+    "status": "dsjflkjd",
+    "createdAt": "2020-01-09T18:30:00.000+00:00",
+    "updatedAt": "2020-01-09T18:30:00.000+00:00"
+}
+
+
+For Update :
+
+{ 
+    "id":1,
+    "title": "I am here",
+    "description": "kjldfldskf",
+    "status": "dsjflkjd",
+    "createdAt": "2020-01-09T18:30:00.000+00:00",
+    "updatedAt": "2020-01-09T18:30:00.000+00:00"
+}
+
+
+select * from task;
+
+CREATE TABLE task(id Bigint not null primary key, title varchar(255), description varchar(255),
+		status varchar(255),createdAt DATE,updatedAt DATE);
+
+insert into task(id, created_at,description, status, title, updated_at) 
+	values(1,'10.01.2020','jay','java developer','Pending','10.01.2020');
+
+insert into task( title,description, status,created_at, updated_at) 
+	values('jay','java developer','Pending','10.01.2020','10.01.2020');
+
+            CREATE TABLE task (
+            id BIGINT NOT NULL INCREMENT,
+            title VARCHAR(255) NOT NULL,
+            description VARCHAR(255) NOT NULL,
+            status VARCHAR(255) NOT NULL,
+            createdAt DATE,
+            updatedAt DATE);
+            
+            
+            
+            
+  ###===========
+  
+  CREATE TABLE employees (
+    employee_id serial PRIMARY KEY,
+    first_name VARCHAR (255),
+    last_name VARCHAR (355),
+    birth_date DATE NOT NULL,
+    hire_date DATE NOT NULL
+);
+INSERT INTO employees (first_name, last_name, birth_date, hire_date)
+VALUES ('Raju', 'Kumar', '1996-12-02', '2020-01-01'),
+       ('Nikhil', 'Aggarwal', '1997-08-24', '2019-01-01'),
+       ('Anshul', 'Aggarwal', '1994-05-11', '2017-01-01');
+SELECT * FROM employees;
+
+
+
+    @PutMapping("/api/tasks/{id}")
+    Task updateTask(@RequestBody Task newTask, @PathVariable Long id) {
+    	return taskRepository.findById(id)
+    			.map(task ->{
+    				task.setTitle(newTask.getTitle());
+    				task.setDescription(newTask.getDescription());
+    				task.setStatus(newTask.getStatus());
+    				task.setCreatedAt(newTask.getCreatedAt());
+    				task.setUpdatedAt(newTask.getUpdatedAt());
+    				return taskRepository.save(task);
+    			}).orElseThrow( () -> new UserNotFoundException(id));
+    }
+    
+    
+    
+    
+    
+    
+          <h1>Sarch : </h1>
+      <input  type="text" placeholder="Seach here" value={keyword} onChange={ (e) => searchPost(e.target.value)}/>
