@@ -34,6 +34,7 @@ public class TaskRepositoryTest {
 		Date updatedAt = new Date();
 		Task task = new Task("Java Full Web Development","Java Develper","Completed",createdAt,updatedAt);	
 		Task savedtask = taskRepository.save(task);
+		System.out.println(task);
 		assertThat(savedtask.getId()).isGreaterThan(0);
 		
 	}
